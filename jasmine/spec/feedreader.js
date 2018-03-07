@@ -115,11 +115,8 @@ $(function() {
         it('has at least a single .entry element within the .feed container', function(){
 
             expect($('.feed')).not.toBeEmpty();
-          
-
+            
         });
-
-
     });
     
 
@@ -135,18 +132,28 @@ $(function() {
 
     describe('New Feed Selection', function(){
 
-        it('is changed', function(){
+        var firstContent;
 
-            expect($)
+        beforeEach(function(done){
+           
+            loadFeed(0, function(){
+            
+                firstContent = $('.feed').html();
 
+                loadFeed(1, function(){
 
-            loadFeed(0);
-            done();
+                    done();
 
+                });   
+            });
         });
 
+        it('content is changed when loaded', function(){
 
+            var secondContent = $('.feed').html();
 
+            expect(secondContent).not.toBe(firstContent);
+        });
     });
 
 
