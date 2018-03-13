@@ -66,10 +66,10 @@ $(function() {
 
         it('is changing visibility when the menu icon is clicked', function(){
        
-            $('.menu-icon-link').trigger( "click" );
-            expect($('body')).not.toHaveClass('menu-hidden');
-            $('.menu-icon-link').trigger( "click" );
-            expect($('body')).toHaveClass('menu-hidden');
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden'));
 
         });
     });
@@ -93,8 +93,8 @@ $(function() {
 
 
         it('has at least a single .entry element within the .feed container', function(){
-
-            expect($('.feed')).not.toBeEmpty();
+    
+            expect($('.feed .entry')).not.toBeEmpty();
             
         });
     });
